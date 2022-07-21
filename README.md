@@ -53,7 +53,7 @@ The layers of microservice are-
 
 #########################<br />
 Testing the Restful Web Services:t<br />
-#########################
+#########################################
 
 ### 1. Searching By PostCode Example:
 
@@ -132,7 +132,10 @@ RESPONSE BODY
 "suburb": "North Melbourne"
 }
 
-# Steps to deploy in EC2
+#########################<br />
+## Steps to deploy in EC2 <br />
+#########################
+
 
 ## NOTE: A JAR has been added in GIT already for reference
 **Location: src/test/resources/samplejar/demo-0.0.1-SNAPSHOT.jar**
@@ -144,8 +147,10 @@ RESPONSE BODY
 
 ## NOTE: A postman collection is also added in location "src/test/resources/postmanCollection"
 
+#########################<br />
+## TO DO items <br />
+#########################
 
-### TO DO
 
 1. System testing can also be implemented by using cucumber.
 2. More unit testing can be added to improve coverage.
