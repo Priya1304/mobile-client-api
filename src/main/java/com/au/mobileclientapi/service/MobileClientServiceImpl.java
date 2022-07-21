@@ -19,16 +19,31 @@ public class MobileClientServiceImpl implements MobileClientService{
         this.postCodeRecordRepository = postCodeRecordRepository;
     }
 
+    /**
+     * Finds by postcode
+     * @param postCode
+     * @return
+     */
     @Override
     public List<PostCodeRecord> findByPostCode(String postCode) {
        return postCodeRecordRepository.findByPostCode(postCode);
     }
 
+    /**
+     * Finds by suburb
+     * @param suburb
+     * @return
+     */
     @Override
     public List<PostCodeRecord> findBySuburb(String suburb) {
         return postCodeRecordRepository.findBySuburb(suburb);
     }
 
+    /**
+     * Adds new record
+     * @param postCodeRecord
+     * @return
+     */
     @Override
     public PostCodeRecord addNewRecord(PostCodeRecord postCodeRecord) {
         return postCodeRecordRepository.save(postCodeRecord);

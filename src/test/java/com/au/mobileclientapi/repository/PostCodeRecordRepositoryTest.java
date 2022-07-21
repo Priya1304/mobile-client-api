@@ -1,5 +1,6 @@
 package com.au.mobileclientapi.repository;
 
+import com.au.mobileclientapi.TestUtils;
 import com.au.mobileclientapi.dao.PostCodeRecord;
 import org.assertj.core.api.Assertions;
 import org.hamcrest.core.Is;
@@ -36,21 +37,12 @@ public class PostCodeRecordRepositoryTest {
     }
     @Test
     public void shouldSaveNewRecord() {
-        postCodeRecordRepository.save(getNewRecord());
+        postCodeRecordRepository.save(TestUtils.getNewRecord());
         List<PostCodeRecord> postCodeRecordList = postCodeRecordRepository.findAll();
-        Assertions.assertThat(postCodeRecordList.stream().findFirst().get()).isEqualTo(getNewRecord());
+        Assertions.assertThat(postCodeRecordList.stream().findFirst().get()).isEqualTo(TestUtils.getNewRecord());
         Assertions.assertThat(postCodeRecordList).isNotNull();
     }
 
-    private PostCodeRecord getNewRecord() {
-
-        PostCodeRecord postCodeRecord = new PostCodeRecord();
-        postCodeRecord.setPostCode("3000");
-        postCodeRecord.setSuburb("Melbourne");
-        postCodeRecord.setId(1001L);
-
-        return postCodeRecord;
-    }
 
     private List<PostCodeRecord> getExpectedResponse() {
         List<PostCodeRecord> postCodeRecordList = new ArrayList<>();

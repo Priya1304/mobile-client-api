@@ -1,9 +1,11 @@
 
 package com.au.mobileclientapi.controller;
 
+import com.au.mobileclientapi.TestUtils;
 import com.au.mobileclientapi.dao.PostCodeRecord;
 import com.au.mobileclientapi.exception.RecordNotFoundException;
 import com.au.mobileclientapi.service.MobileClientService;
+import org.assertj.core.api.Assertions;
 import org.hamcrest.core.Is;
 
 import org.junit.Test;
@@ -32,13 +34,14 @@ public class MobileClientControllerTest {
     @Autowired
     MobileClientController mobileClientController;
 
+
     @Test
     public void shouldReturnPostCode() throws Exception {
 
         ResponseEntity<List<PostCodeRecord>>  responseEntity = mobileClientController.searchByPostCode("3008");
 
         assertThat(responseEntity.getStatusCode(), Is.is(HttpStatus.OK));
-        assertThat(responseEntity.getBody(), Is.is(getSearchResult()));
+        assertThat(responseEntity.getBody(), Is.is(TestUtils.getSearchResult()));
 
     }
 
@@ -48,7 +51,14 @@ public class MobileClientControllerTest {
         ResponseEntity<List<PostCodeRecord>>  responseEntity = mobileClientController.searchBySuburbName("Docklands");
 
         assertThat(responseEntity.getStatusCode(), Is.is(HttpStatus.OK));
-        assertThat(responseEntity.getBody(), Is.is(getSearchResult()));
+        assertThat(responseEntity.getBody(), Is.is(TestUtils.getSearchResult()));
+
+    }
+
+    @Test
+    public void shouldAddNewRecord() throws Exception {
+        ResponseEntity<PostCodeRecord>  responseEntity = mobileClientController.addNewAddressRecord(TestUtils.getNewRecord());
+        assertThat(responseEntity.getStatusCode(), Is.is(HttpStatus.CREATED));
 
     }
 
@@ -58,19 +68,11 @@ public class MobileClientControllerTest {
         ResponseEntity<List<PostCodeRecord>>  responseEntity = mobileClientController.searchBySuburbName("3006");
 
         assertThat(responseEntity.getStatusCode(), Is.is(HttpStatus.BAD_REQUEST));
-        assertThat(responseEntity.getBody(), Is.is(getSearchResult()));
+        assertThat(responseEntity.getBody(), Is.is(TestUtils.getSearchResult()));
 
     }
 
-    private List<PostCodeRecord> getSearchResult() {
-        List<PostCodeRecord> postCodeRecordList = new ArrayList<>();
-        PostCodeRecord postCodeRecord = new PostCodeRecord();
-        postCodeRecord.setPostCode("3008");
-        postCodeRecord.setSuburb("Docklands");
-        postCodeRecord.setId(1002L);
-         postCodeRecordList.add(postCodeRecord);
-         return postCodeRecordList;
-    }
+
 
 }
 
