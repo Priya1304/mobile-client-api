@@ -31,8 +31,10 @@ The layers of microservice are-
 3. Repository - Used to perform Data Access Operation
 4. Model - DTO and Entity
 5. The H2 database table created and the initial values is added using the data.sql
-6. Validation is done on postcode
-7. Exceptions are handled
+6. Spring security is enabled using the JWT token.
+7. Validation is done on postcode
+8. Exceptions are handled
+
 
 #########################<br />
 ## Details<br />
@@ -148,5 +150,7 @@ RESPONSE BODY
 1. System testing can also be implemented by using cucumber.
 2. More unit testing can be added to improve coverage.
 3. Swagger can be added.
+4. Security keys can be placed in AWS parameter store and password encoding can be added for better security.
+5. Any hardcoded values can be parameterized.
 
 
