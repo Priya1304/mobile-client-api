@@ -46,7 +46,7 @@ The layers of microservice are-
 
 2. Run:
 
->java -jar target/demo-0.0.1-SNAPSHOT.jar.jar
+>java -jar target/demo-0.0.1-SNAPSHOT.jar
 
 
 #########################<br />
@@ -91,14 +91,34 @@ RESPONSE BODY
 
 ### 2. Add a new record Example:
 
-#### API Request-
+#### AUTHENTICATE
 
-> $ curl --location --request POST 'http://localhost:9000/v1/api/update/addressRecord' \
-> --header 'Content-Type: application/json' \
-> --data-raw '{
-"postCode":"3008",
-"suburb":"ABCD"
-> }'
+#### API Request to get a token-
+
+>curl --location --request POST 'http://localhost:9000/authenticate' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+"username": "foo",
+"password": "foo"
+}'
+
+#### API Response-
+
+> {
+"jwt": "sampleToken"
+}
+
+Copy the token and use in the next request.
+
+#### Add a new Record
+
+>curl --location --request POST 'http://localhost:9000/v1/api/update/addressRecord' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer sampleToken' \
+--data-raw '{
+"postCode":"3009",
+"suburb":"ABC"
+}'
 
 #### API Response-
 
@@ -110,8 +130,23 @@ RESPONSE BODY
 "suburb": "North Melbourne"
 }
 
+# Steps to deploy in EC2
+
+## NOTE: A JAR has been added in GIT already for reference
+**Location: src/test/resources/samplejar/demo-0.0.1-SNAPSHOT.jar**
+
+1. Take the JAR file from "src/test/resources/samplejar/demo-0.0.1-SNAPSHOT.jar"
+2. Copy the Spring boot JAR on EC2 instance
+3. Allow port 8080 on the instance security group
+4. Test the application deployed on EC2
+
+## NOTE: A postman collection is also added in location "src/test/resources/postmanCollection"
+
 
 ### TO DO
 
 1. System testing can also be implemented by using cucumber.
-2. 
+2. More unit testing can be added to improve coverage.
+3. Swagger can be added.
+
+

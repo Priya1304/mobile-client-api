@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "792ef618-567a-46c0-8747-870263144c4b",
+		"name": "Postman Collection: mobile-client-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8478712"
+	},
+	"item": [
+		{
+			"name": "Search by post code",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Search by suburb",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "POST call to get a token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"foo\",\n    \"password\": \"foo\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST call to add a record",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJmb28iLCJleHAiOjE2NTg0MDU1MTcsImlhdCI6MTY1ODM2OTUxN30.blCGf94vozqmL1ULS5d-rB7zD9yGHNqImQMeJba0I48",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"postCode\":\"3009\",\n    \"suburb\":\"ABC\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/api/update/addressRecord",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"api",
+						"update",
+						"addressRecord"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
