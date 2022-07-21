@@ -137,7 +137,7 @@ RESPONSE BODY
 #########################
 
 
-## NOTE: A JAR has been added in GIT already for reference
+##### NOTE: A JAR has been added in GIT already for reference
 **Location: src/test/resources/samplejar/demo-0.0.1-SNAPSHOT.jar**
 
 1. Take the JAR file from "src/test/resources/samplejar/demo-0.0.1-SNAPSHOT.jar"
@@ -145,7 +145,7 @@ RESPONSE BODY
 3. Allow port 8080 on the instance security group
 4. Test the application deployed on EC2
 
-## NOTE: A postman collection is also added in location "src/test/resources/postmanCollection"
+##### NOTE: A postman collection is also added in location "src/test/resources/postmanCollection"
 
 #########################<br />
 ## TO DO items <br />
